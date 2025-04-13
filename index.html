@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BF GIF + Audio</title>
+  <title>i am boyfriending it</title>
   <style>
     html, body {
       margin: 0;
@@ -28,9 +28,29 @@
 </head>
 <body>
   <img src="bf.gif" class="bg" alt="Background GIF">
-  <audio autoplay loop>
+
+  <audio id="bg-audio" loop>
     <source src="bf.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
+
+  <script>
+    // Try to play audio immediately
+    const audio = document.getElementById('bg-audio');
+
+    function tryPlay() {
+      audio.play().catch(() => {
+        // If autoplay is blocked, wait for user interaction
+        const clickToPlay = () => {
+          audio.play();
+          document.removeEventListener('click', clickToPlay);
+        };
+        document.addEventListener('click', clickToPlay);
+      });
+    }
+
+    // Attempt to play after page loads
+    window.addEventListener('load', tryPlay);
+  </script>
 </body>
 </html>
