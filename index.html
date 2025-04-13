@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>i am boyfriending it</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: black;
+    }
+
+    .bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Make sure bf.gif is in the same folder as index.html -->
+  <img src="bf.gif" class="bg" alt="Background GIF">
+
+  <!-- Autoplay audio with user interaction -->
+  <audio id="loop-limited" preload="auto">
+    <source src="bf.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    var loopLimit = 999999999999999;
+    var loopCounter = 0;
+
+    const audio = document.getElementById('loop-limited');
+
+    // Wait for the user to click anywhere on the page to start audio
+    document.body.addEventListener('click', function() {
+      audio.play();
+    });
+
+    // Loop the audio
+    audio.addEventListener('ended', function () {
+      if (loopCounter < loopLimit) {
+        this.currentTime = 0;
+        this.play();
+        loopCounter++;
+      }
+    }, false);
+  </script>
+</body>
+</html>
