@@ -9,9 +9,6 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-    }
-
-    body {
       background: black;
     }
 
@@ -24,33 +21,33 @@
       object-fit: cover;
       z-index: -1;
     }
+
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <img src="bf.gif" class="bg" alt="Background GIF">
 
-  <audio id="bg-audio" loop>
-    <source src="bf.mp3" type="audio/mpeg">
-    Your browser does not support the audio tag.
+  <audio id="loop-limited" autoplay>
+    <source src="bf.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
   </audio>
 
   <script>
-    // Try to play audio immediately
-    const audio = document.getElementById('bg-audio');
+    var loopLimit = 999999999999999;
+    var loopCounter = 0;
 
-    function tryPlay() {
-      audio.play().catch(() => {
-        // If autoplay is blocked, wait for user interaction
-        const clickToPlay = () => {
-          audio.play();
-          document.removeEventListener('click', clickToPlay);
-        };
-        document.addEventListener('click', clickToPlay);
-      });
-    }
+    const audio = document.getElementById('loop-limited');
 
-    // Attempt to play after page loads
-    window.addEventListener('load', tryPlay);
+    audio.addEventListener('ended', function () {
+      if (loopCounter < loopLimit) {
+        this.currentTime = 0;
+        this.play();
+        loopCounter++;
+      }
+    }, false);
   </script>
 </body>
 </html>
