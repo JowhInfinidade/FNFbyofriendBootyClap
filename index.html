@@ -2,58 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>i am boyfriending it</title>
+  <title>torajo torajo torajo</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: black;
+    body {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding-top: 50px;
     }
 
-    .bg {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -1;
+    img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
     }
 
-    audio {
-      display: none;
+    h1 {
+      font-size: 2.5em;
+      letter-spacing: 3px;
     }
   </style>
 </head>
 <body>
-  <!-- Make sure bf.gif is in the same folder as index.html -->
-  <img src="bf.gif" class="bg" alt="Background GIF">
-
-  <!-- Autoplay audio with user interaction -->
-  <audio id="loop-limited" preload="auto">
-    <source src="bf.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    var loopLimit = 999999999999999;
-    var loopCounter = 0;
-
-    const audio = document.getElementById('loop-limited');
-
-    // Wait for the user to click anywhere on the page to start audio
-    document.body.addEventListener('click', function() {
-      audio.play();
-    });
-
-    // Loop the audio
-    audio.addEventListener('ended', function () {
-      if (loopCounter < loopLimit) {
-        this.currentTime = 0;
-        this.play();
-        loopCounter++;
-      }
-    }, false);
-  </script>
+  <h1>torajo torajo torajo</h1>
+  <img src="torajo.png" alt="torajo">
 </body>
 </html>
